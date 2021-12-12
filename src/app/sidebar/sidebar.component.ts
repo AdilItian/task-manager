@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
     if (!val) {
       return this.filteredTasks = [...this.tasks];
     }
-    return this.filteredTasks = this.tasks.filter(f => f.title.toLowerCase().indexOf(val) > -1);
+    return this.filteredTasks = this.tasks.filter(f => f.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
     
   }
 
