@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+.dropdown-toggle.no-caret::after {
+    display:none;
+}
+
+* {
+    outline: none;
+}
+
+.dropdown-menu {
+    padding-bottom: 0;
+    padding-top: 0;
+}

@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.icon {
+    font-size: 2em;
+    cursor: pointer;
+    outline: none;
+    transform: rotate(90deg) translateY(-1.5rem);
+    display: inline-block;
+    margin-left: 2rem;
+}
