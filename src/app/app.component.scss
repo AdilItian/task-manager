@@ -1,5 +1,29 @@
-.sidebar {
-    max-width: 20rem;
-    padding-right: 1rem;
+.main-container {
+    display: flex;
+    gap: 1rem; 
+    justify-content: space-around;
     padding-left: 1rem;
+    padding-right: 1rem;
+    flex-wrap: wrap;
+}
+
+.sidebar {
+    padding-right: 1rem;
+    flex: 1;
+    padding-left: 1rem;
+    border: 1px solid lightgray;
+    padding-top: 2rem;
+    border-radius: 0.5rem;
+    @media (min-width: 768px) {
+        max-width: 20rem;
+    }
+}
+.content {
+    @media (min-width: 481px) {
+        min-width: 30rem;   
+    }
+    flex: 1;
+    border: 1px solid lightgray;
+    padding: 1rem;
+    border-radius: 0.5rem;
 }

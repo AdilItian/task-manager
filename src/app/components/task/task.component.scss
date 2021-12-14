@@ -1,4 +1,4 @@
-.container {
+.container-main {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,7 +15,7 @@
     font-size: 2em;
     cursor: pointer;
     outline: none;
-    transform: rotate(90deg) translateY(-1.5rem);
+    transform: rotate(90deg);
     display: inline-block;
     margin-left: 2rem;
 }

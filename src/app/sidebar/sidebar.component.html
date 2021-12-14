@@ -1,6 +1,6 @@
 <p>Existing tasks</p>
 
-<input class="form-control" type="search"  (input)="searchTasks($event)" />
+<input class="form-control" placeholder="Search" type="search"  (input)="searchTasks($event)" />
 
 <div *ngFor="let task of filteredTasks">
 <app-task [data]="task"></app-task>
