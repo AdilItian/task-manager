@@ -1,0 +1,113 @@
+<ul ngbNav #nav="ngbNav" class="links">
+  <li ngbNavItem>
+    <a ngbNavLink>Analyze Task</a>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Start Task</a>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Full Process Analysis</a>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Stop</a>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>View/Update Config</a>
+    <ng-template ngbNavContent>
+      <div class="config-tables">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2" class="text-center">Task Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Detail 1</td>
+              <td><input value="Text" /></td>
+            </tr>
+            <tr>
+              <td>Detail 2</td>
+              <td><input value="Text" /></td>
+            </tr>
+            <tr>
+              <td>Detail 3</td>
+              <td><input value="Text" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2" class="text-center">Config</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Config 1</td>
+              <td><input value="Value" /></td>
+            </tr>
+            <tr>
+              <td>Config 2</td>
+              <td><input value="Value" /></td>
+            </tr>
+            <tr>
+              <td>Config 3</td>
+              <td><input value="Value" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-success">Save</button>
+    </ng-template>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Export to XL</a>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Publish Task</a>
+    <ng-template ngbNavContent>
+      <div class="publish-tables">
+        <table>
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Grant Access</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>User1</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>User 2</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>User 3</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-success">Save</button>
+    </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>

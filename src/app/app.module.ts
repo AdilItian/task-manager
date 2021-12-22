@@ -9,6 +9,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TaskComponent } from './components/task/task.component';
 import { ConnectionComponent } from './components/connection/connection.component';
 import { FormsModule } from '@angular/forms';
+import { TaskDetailsComponent } from './components/task-details/task-details.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     TaskComponent,
     ConnectionComponent,
+    TaskDetailsComponent,
   ],
   imports: [
     BrowserModule,

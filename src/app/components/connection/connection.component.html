@@ -81,6 +81,13 @@
           </div>
       </ng-template>
     </ng-container>
+
+    <ng-container ngbNavItem>
+      <a ngbNavLink>Details</a>
+      <ng-template ngbNavContent>
+        <app-task-details></app-task-details>
+      </ng-template>
+    </ng-container>
   </nav>
 
   <div [ngbNavOutlet]="nav" class="mt-2"></div>

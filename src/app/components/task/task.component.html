@@ -5,7 +5,7 @@
         ... 
     </span>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="mt-2">
-      <button ngbDropdownItem>Edit</button>
+      <button ngbDropdownItem (click)="onSelect(data)">Edit</button>
       <button ngbDropdownItem>Delete</button>
     </div>
   </span>

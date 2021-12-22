@@ -2,10 +2,10 @@
 
 <div class="main-container">
 <div class="sidebar">
-<app-sidebar></app-sidebar>
+<app-sidebar [tasks]="tasks" [onSelectTask]="handleSelectTask"></app-sidebar>
 </div>
 <div class="content">
-<app-connection></app-connection>
+<app-connection [task]="selectedTask"></app-connection>
 </div>
 </div>
 
