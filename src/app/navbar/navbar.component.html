@@ -1,3 +1,19 @@
+<ng-template #adhoc_task let-modal> 
+  <div>
+      <app-adhoc-task></app-adhoc-task>
+  </div>
+</ng-template>
+<ng-template #task_from_server let-modal> 
+  <div>
+      <app-server-task></app-server-task>
+  </div>
+</ng-template>
+<ng-template #full_process_task let-modal> 
+  <div>
+      <app-full-process-task></app-full-process-task>
+  </div>
+</ng-template>
+
 <nav class="navbar navbar-expand-lg navbar-light mb-3">
     <a class="navbar-brand" [routerLink]="'.'">Logo</a>
   
@@ -19,7 +35,7 @@
           >
           <div ngbDropdownMenu="connections">
             <a class="nav-link" [routerLink]="'.'" ngbDropdownItem
-              ><button class="btn-sm" ngbDropdownItem>Configure Connections</button></a
+              ><button class="btn-sm" ngbDropdownItem (click)="onConfigureConnection(true)">Configure Connections</button></a
             >
           </div>
         </li>
@@ -30,13 +46,13 @@
           >
           <div ngbDropdownMenu="connections">
             <a class="nav-link" [routerLink]="'.'" ngbDropdownItem
-              ><button class="btn-sm" ngbDropdownItem>Adhoc task</button></a
+              ><button class="btn-sm" ngbDropdownItem (click)="open(adhoc_task)">Adhoc task</button></a
             >
             <a class="nav-link" [routerLink]="'.'" ngbDropdownItem
-              ><button class="btn-sm" ngbDropdownItem>Task from Server</button></a
+              ><button class="btn-sm" ngbDropdownItem (click)="open(task_from_server)">Task from Server</button></a
             >
             <a class="nav-link" [routerLink]="'.'" ngbDropdownItem
-              ><button class="btn-sm" ngbDropdownItem>Task from Server</button></a
+              ><button class="btn-sm" ngbDropdownItem (click)="open(full_process_task)">Full Process Task</button></a
             >
           </div>
         </li>

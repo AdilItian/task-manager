@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./connection.component.scss'],
 })
 export class ConnectionComponent implements OnInit {
-  @Input() task: any;
+  @Input() task: any = null;
   public existingConnections = ['Localhost', 'LiveDb'];
   public authenticationTypes = ['LDAP', 'TD2', '0Auth', 'OKTA'];
 

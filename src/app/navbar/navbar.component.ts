@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-navbar',
@@ -7,11 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  @Input()
+  onConfigureConnection!: (args: boolean) => void;
+
   public isMenuCollapsed = true;
 
-  constructor() { }
+  constructor(private modalService: NgbModal){}  
 
   ngOnInit(): void {
   }
+
+  open(content: any) {  
+    return this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  } 
 
 }

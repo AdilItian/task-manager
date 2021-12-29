@@ -1,11 +1,15 @@
-<app-navbar></app-navbar>
+<app-navbar
+  [onConfigureConnection]="handleConfigureConnection"
+></app-navbar>
 
 <div class="main-container">
-<div class="sidebar">
-<app-sidebar [tasks]="tasks" [onSelectTask]="handleSelectTask"></app-sidebar>
+  <div class="sidebar">
+    <app-sidebar
+      [tasks]="tasks"
+      [onSelectTask]="handleSelectTask"
+    ></app-sidebar>
+  </div>
+  <div class="content" *ngIf="configureConnection || selectedTask">
+    <app-connection [task]="selectedTask"></app-connection>
+  </div>
 </div>
-<div class="content">
-<app-connection [task]="selectedTask"></app-connection>
-</div>
-</div>
-

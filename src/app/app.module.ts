@@ -10,6 +10,9 @@ import { TaskComponent } from './components/task/task.component';
 import { ConnectionComponent } from './components/connection/connection.component';
 import { FormsModule } from '@angular/forms';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
+import { AdhocTaskComponent } from './components/adhoc-task/adhoc-task.component';
+import { ServerTaskComponent } from './components/server-task/server-task.component';
+import { FullProcessTaskComponent } from './components/full-process-task/full-process-task.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { TaskDetailsComponent } from './components/task-details/task-details.com
     TaskComponent,
     ConnectionComponent,
     TaskDetailsComponent,
+    AdhocTaskComponent,
+    ServerTaskComponent,
+    FullProcessTaskComponent,
   ],
   imports: [
     BrowserModule,

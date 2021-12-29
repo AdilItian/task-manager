@@ -1,0 +1,22 @@
+<div class="container-fluid pt-3">
+    <h5 class="text-center mb-5">Task from server</h5>
+  
+    <div class="form-group">
+      <select class="form-control">
+        <option>Connection1</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Task ID</label>
+      <input class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Task Data</label>
+        <input class="form-control" />
+      </div>
+    <div class="form-group text-right">
+      <button class="btn btn-outline-danger mr-2" (click)="cancel()">Cancel</button>
+      <button class="btn btn-success" (click)="save()">Save</button>
+    </div>
+  </div>
+  

@@ -82,7 +82,7 @@
       </ng-template>
     </ng-container>
 
-    <ng-container ngbNavItem>
+    <ng-container ngbNavItem *ngIf="task">
       <a ngbNavLink>Details</a>
       <ng-template ngbNavContent>
         <app-task-details></app-task-details>
