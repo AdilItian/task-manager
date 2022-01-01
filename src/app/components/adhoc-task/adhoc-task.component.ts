@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-adhoc-task',
@@ -8,7 +9,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AdhocTaskComponent implements OnInit {
 
-  constructor(private modalService: NgbModal){}
+  public task: any = {};
+
+  constructor(private modalService: NgbModal, private taskService: TaskService){}
 
   ngOnInit(): void {
   }
@@ -16,7 +19,10 @@ export class AdhocTaskComponent implements OnInit {
   cancel() {
     return this.modalService.dismissAll();
   }
-  save() {
-    return this.modalService.dismissAll();
+  async save() {
+    const data = await this.taskService.createAdhocTask(this.task);
+    if (data) {
+      return this.modalService.dismissAll();
+    }
   }
 }
