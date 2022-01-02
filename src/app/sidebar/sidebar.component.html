@@ -2,6 +2,6 @@
 
 <input class="form-control" placeholder="Search" type="search"  (input)="searchTasks($event)" />
 
-<div *ngFor="let task of filteredTasks">
+<div *ngFor="let task of filteredTasks | async">
 <app-task [onSelect]="onSelectTask" [data]="task"></app-task>
 </div>

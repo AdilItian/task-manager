@@ -2,16 +2,19 @@
     <h5 class="text-center mb-5">Full Process Task</h5>
   
     <div class="form-group">
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="task.connectionId">
         <option>Connection1</option>
       </select>
     </div>
     <div class="form-group">
-      <textarea class="form-control" rows="10"></textarea>
+      <textarea class="form-control" rows="10" [(ngModel)]="task.description"></textarea>
     </div>
     <div class="form-group text-right">
-      <button class="btn btn-outline-danger mr-2" (click)="cancel()">Cancel</button>
-      <button class="btn btn-success" (click)="save()">Save</button>
+      <button class="btn btn-outline-danger mr-2" [disabled]="isLoading" (click)="cancel()">Cancel</button>
+      <button [disabled]="isLoading" class="btn btn-success" (click)="save()">
+        <app-spinner *ngIf="isLoading"></app-spinner>
+        <span> Save</span>
+      </button>
     </div>
   </div>
   
