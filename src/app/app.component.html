@@ -4,8 +4,8 @@
 
 <div class="main-container">
   <div class="sidebar">
+    <app-spinner></app-spinner>
     <app-sidebar
-      [tasks]="currentTasks"
       [onSelectTask]="handleSelectTask"
     ></app-sidebar>
   </div>
@@ -13,3 +13,6 @@
     <app-connection [task]="selectedTask"></app-connection>
   </div>
 </div>
+
+
+<app-toasts></app-toasts>

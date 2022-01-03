@@ -14,6 +14,10 @@ import { TaskDetailsComponent } from './components/task-details/task-details.com
 import { AdhocTaskComponent } from './components/adhoc-task/adhoc-task.component';
 import { ServerTaskComponent } from './components/server-task/server-task.component';
 import { FullProcessTaskComponent } from './components/full-process-task/full-process-task.component';
+import { ToastsContainer } from './toast-container-component';
+import { NgRedux, NgReduxModule } from 'ng2-redux';
+import { IAppState, rootReducer, INITIAL_STATE } from './store';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -26,15 +30,22 @@ import { FullProcessTaskComponent } from './components/full-process-task/full-pr
     AdhocTaskComponent,
     ServerTaskComponent,
     FullProcessTaskComponent,
+    ToastsContainer,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgReduxModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>) {
+    ngRedux.configureStore(rootReducer, INITIAL_STATE);
+  }
+}

@@ -1,32 +1,34 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgRedux, select } from 'ng2-redux';
+import { IAppState } from '../store';
+import { TASK_FILTER_SIDEBAR } from '../actions';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent implements OnInit, OnChanges {
-  @Input() tasks: any = [];
+export class SidebarComponent implements OnInit {
   @Input()
   onSelectTask!: (args: any) => void;
+
+  @select((store) => store.sidebarTasks)
+  tasks: any;
+
+  constructor(private ngRedux: NgRedux<IAppState>) {}
+
   public filteredTasks: any = [];
-  constructor() {
-  }
-  ngOnChanges(): void {
-    this.filteredTasks = [...this.tasks];
-  }
 
   ngOnInit(): void {
-    this.filteredTasks = [...this.tasks];
+    this.filteredTasks = this.tasks;
   }
 
   searchTasks(e: any) {
-    const val = e.target.value;
-    if (!val) {
-      return (this.filteredTasks = [...this.tasks]);
-    }
-    return (this.filteredTasks = this.tasks.filter(
-      (f: any) => f.taskName.toLowerCase().indexOf(val.toLowerCase()) > -1
-    ));
+    this.ngRedux.dispatch({
+      type: TASK_FILTER_SIDEBAR,
+      payload: {
+        searchText: e.target.value,
+      },
+    });
   }
 }
