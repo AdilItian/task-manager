@@ -1,4 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgRedux, select } from 'ng2-redux';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IAppState } from '../../store';
+import { SELECT_TASK } from '../../actions';
+import { APP_URLS } from 'src/app/app-routing.module';
 
 @Component({
   selector: 'app-task',
@@ -14,8 +19,20 @@ export class TaskComponent implements OnInit {
   @Input()
   onSelect!: (args: any) => void;
 
-  constructor() {}
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
+  onSelectTask(task: any) {
+    this.ngRedux.dispatch({
+      type: SELECT_TASK,
+      payload: {
+        task,
+      },
+    });
+    this.router.navigateByUrl(APP_URLS.TASK_DETAILS);
   }
+
+  ngOnInit(): void {}
 }

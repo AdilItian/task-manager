@@ -1,17 +1,7 @@
+<h5 class="text-center mb-5 pt-3">Task Details</h5>
+
 <ul ngbNav #nav="ngbNav" class="links">
-  <li ngbNavItem>
-    <a ngbNavLink>Analyze Task</a>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink>Start Task</a>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink>Full Process Analysis</a>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink>Stop</a>
-  </li>
-  <li ngbNavItem>
+  <li ngbNavItem routerLinkActive="true">
     <a ngbNavLink>View/Update Config</a>
     <ng-template ngbNavContent>
       <div class="config-tables">
@@ -62,9 +52,6 @@
     </ng-template>
   </li>
   <li ngbNavItem>
-    <a ngbNavLink>Export to XL</a>
-  </li>
-  <li ngbNavItem>
     <a ngbNavLink>Publish Task</a>
     <ng-template ngbNavContent>
       <div class="publish-tables">
@@ -109,5 +96,46 @@
       <button class="btn btn-success">Save</button>
     </ng-template>
   </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Analyze Task</a>
+    <ng-template ngbNavContent>
+      <div class="py-3 text-center">
+        --- No Content ----
+      </div>
+    </ng-template>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Start Task</a>
+    <ng-template ngbNavContent>
+      <div class="py-3 text-center">
+        --- No Content ----
+      </div>
+    </ng-template>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Full Process Analysis</a>
+    <ng-template ngbNavContent>
+      <div class="py-3 text-center">
+        --- No Content ----
+      </div>
+    </ng-template>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Stop</a>
+    <ng-template ngbNavContent>
+      <div class="py-3 text-center">
+        --- No Content ----
+      </div>
+    </ng-template>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Export to XL</a>
+    <ng-template ngbNavContent>
+      <div class="py-3 text-center">
+        --- No Content ----
+      </div>
+    </ng-template>
+  </li>
+  
 </ul>
 <div [ngbNavOutlet]="nav"></div>

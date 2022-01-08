@@ -6,11 +6,11 @@
   <div class="sidebar">
     <app-spinner></app-spinner>
     <app-sidebar
-      [onSelectTask]="handleSelectTask"
     ></app-sidebar>
   </div>
-  <div class="content" *ngIf="configureConnection || selectedTask">
-    <app-connection [task]="selectedTask"></app-connection>
+  <div class="content">
+    <!-- <app-connection [task]="selectedTask"></app-connection> -->
+    <router-outlet></router-outlet>
   </div>
 </div>
 

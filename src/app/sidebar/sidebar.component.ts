@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from 'ng2-redux';
 import { IAppState } from '../store';
 import { TASK_FILTER_SIDEBAR } from '../actions';
@@ -9,8 +9,6 @@ import { TASK_FILTER_SIDEBAR } from '../actions';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  @Input()
-  onSelectTask!: (args: any) => void;
 
   @select((store) => store.sidebarTasks)
   tasks: any;

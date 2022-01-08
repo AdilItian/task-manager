@@ -30,29 +30,29 @@
     <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="nav-item" ngbDropdown>
-          <a class="nav-link" [routerLink]="'.'" id="connections" ngbDropdownToggle
+          <a class="nav-link cursor-pointer" id="connections" ngbDropdownToggle
             >Connections</a
           >
           <div ngbDropdownMenu="connections">
-            <a class="nav-link" [routerLink]="'.'" ngbDropdownItem
-              ><button class="btn-sm" ngbDropdownItem (click)="onConfigureConnection(true)">Configure Connections</button></a
+            <a class="nav-link" [routerLink]="APP_URLS.CONFIGURE_CONNECTION" ngbDropdownItem
+              ><button class="btn-sm" ngbDropdownItem >Configure Connections</button></a
             >
           </div>
         </li>
   
         <li class="nav-item" ngbDropdown>
-          <a class="nav-link" [routerLink]="'.'" id="connections" ngbDropdownToggle
+          <a class="nav-link cursor-pointer" id="connections" ngbDropdownToggle
             >New Task</a
           >
           <div ngbDropdownMenu="connections">
-            <a class="nav-link" [routerLink]="'.'" ngbDropdownItem
-              ><button class="btn-sm" ngbDropdownItem (click)="open(adhoc_task)">Adhoc task</button></a
+            <a class="nav-link" [routerLink]="APP_URLS.ADHOC_TASK" ngbDropdownItem
+              ><button class="btn-sm" ngbDropdownItem >Adhoc task</button></a
             >
-            <a class="nav-link" [routerLink]="'.'" ngbDropdownItem
-              ><button class="btn-sm" ngbDropdownItem (click)="open(task_from_server)">Task from Server</button></a
+            <a class="nav-link" [routerLink]="APP_URLS.TASK_FROM_SERVER" ngbDropdownItem
+              ><button class="btn-sm" ngbDropdownItem>Task from Server</button></a
             >
-            <a class="nav-link" [routerLink]="'.'" ngbDropdownItem
-              ><button class="btn-sm" ngbDropdownItem (click)="open(full_process_task)">Full Process Task</button></a
+            <a class="nav-link" [routerLink]="APP_URLS.FULL_PROCESS_TASK" ngbDropdownItem
+              ><button class="btn-sm" ngbDropdownItem>Full Process Task</button></a
             >
           </div>
         </li>

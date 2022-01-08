@@ -3,18 +3,21 @@ import {
   TASK_SET_LIST,
   TASK_ADD,
   TASK_FILTER_SIDEBAR,
+  SELECT_TASK,
 } from './actions';
 
 export interface IAppState {
   counter: number;
   tasks: Array<any>;
   sidebarTasks: Array<any>;
+  selectedTask: null | any;
 }
 
 export const INITIAL_STATE: IAppState = {
   counter: 0,
   tasks: [],
   sidebarTasks: [],
+  selectedTask: {},
 };
 
 export function rootReducer(state = INITIAL_STATE, action: any): IAppState {
@@ -51,6 +54,9 @@ export function rootReducer(state = INITIAL_STATE, action: any): IAppState {
               .indexOf(action.payload.searchText.toLowerCase()) > -1
         ),
       };
+    case SELECT_TASK:
+      console.log(action.payload.task);
+      return { ...state, selectedTask: action.payload.task };
   }
 
   return state;

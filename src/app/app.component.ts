@@ -12,7 +12,6 @@ import { INCREMENT, TASK_SET_LIST } from './actions';
 })
 export class AppComponent implements OnInit {
   currentTasks: Array<Task> = [
-    // { id: 1, taskName: 'Task 1', connectionId: 1, taskId: 1, description: 'asdf', type: 'asdf' },
   ];
 
   @select()
@@ -28,7 +27,6 @@ export class AppComponent implements OnInit {
   title = 'task-manager';
   increment() {
     this.ngRedux.dispatch({ type: INCREMENT });
-
   }
 
   ngOnInit(): void {
