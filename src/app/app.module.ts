@@ -8,7 +8,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TaskComponent } from './components/task/task.component';
-import { ConnectionComponent } from './components/connection/connection.component';
 import { FormsModule } from '@angular/forms';
 import { TaskDetailsComponent } from './pages/task-details/task-details.component';
 import { AdhocTaskComponent } from './pages/adhoc-task/adhoc-task.component';
@@ -20,6 +19,7 @@ import { IAppState, rootReducer, INITIAL_STATE } from './store';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ConfigureConnectionComponent } from './pages/configure-connection/configure-connection.component';
 import { DefaultLayoutComponent } from './layouts/default/default-layout/default-layout.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,6 @@ import { DefaultLayoutComponent } from './layouts/default/default-layout/default
     NavbarComponent,
     SidebarComponent,
     TaskComponent,
-    ConnectionComponent,
     TaskDetailsComponent,
     AdhocTaskComponent,
     ServerTaskComponent,
@@ -35,7 +34,8 @@ import { DefaultLayoutComponent } from './layouts/default/default-layout/default
     ToastsContainer,
     SpinnerComponent,
     ConfigureConnectionComponent,
-    DefaultLayoutComponent
+    DefaultLayoutComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

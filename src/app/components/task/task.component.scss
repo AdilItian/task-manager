@@ -1,8 +1,21 @@
 .container-main {
+    margin-left: 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    border-left: 1px solid lightgray;
+    padding-left: 2rem;
+    position: relative;
+    &::before {
+        position: absolute;
+        content: '';
+        height: 1px;
+        background-color: lightgray;
+        width: 1.5rem;
+        top: 50%;
+        left: 0;
+    }
 }
 
 .title {

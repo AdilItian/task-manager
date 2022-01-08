@@ -5,6 +5,8 @@ import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../store';
 import { TASK_ADD } from '../../actions';
 import { ToastService } from 'src/app/toast.service';
+import { Router } from '@angular/router';
+import { APP_URLS } from 'src/app/app-routing.module';
 
 @Component({
   selector: 'app-adhoc-task',
@@ -19,18 +21,20 @@ export class AdhocTaskComponent implements OnInit {
   constructor(private modalService: NgbModal, 
     private taskService: TaskService,
     private ngRedux: NgRedux<IAppState>,
-    private toastService: ToastService){}
+    private toastService: ToastService,
+    private router: Router){}
 
   ngOnInit(): void {
   }
 
   cancel() {
-    return this.modalService.dismissAll();
+    return this.router.navigateByUrl(APP_URLS.HOME);
   }
   async save() {
     try {
       this.isLoading = true;
-      const data = await this.taskService.createAdhocTask(this.task);
+      // const data = await this.taskService.createAdhocTask(this.task);
+      const data = {};
       if (data) {
         this.toastService.show('Task added successfully', {classname: 'bg-success text-light'});
         this.ngRedux.dispatch({

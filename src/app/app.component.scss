@@ -12,10 +12,12 @@
     padding-left: 1rem;
     border: 1px solid lightgray;
     min-height: calc(100vh - 5rem);
-    padding-top: 2rem;
     border-radius: 0.5rem;
     @media (min-width: 768px) {
         max-width: 20rem;
+    }
+    @media (min-width: 300px) {
+        min-width: 270px;
     }
 }
 .content {

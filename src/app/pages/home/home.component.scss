@@ -1,0 +1,11 @@
+.home-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+
+    .fa {
+        font-size: 10rem;
+    }
+}

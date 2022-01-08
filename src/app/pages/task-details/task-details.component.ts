@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { APP_URLS } from 'src/app/app-routing.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-details',
@@ -22,7 +24,12 @@ export class TaskDetailsComponent implements OnInit {
     { Config2: 'Value' },
     { Config3: 'Value' },
   ];
-  constructor() {}
+  constructor(private router: Router) {}
+
+  cancel() {
+    return this.router.navigateByUrl(APP_URLS.HOME);
+  }
 
   ngOnInit(): void {}
 }
+

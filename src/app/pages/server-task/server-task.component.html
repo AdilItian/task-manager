@@ -15,10 +15,10 @@
         <input class="form-control" [(ngModel)]="task.description" />
       </div>
     <div class="form-group text-right">
-      <button class="btn btn-outline-danger mr-2" [disabled]="isLoading" (click)="cancel()">Cancel</button>
+      <button class="btn btn-outline-danger mr-2" [disabled]="isLoading" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button>
       <button [disabled]="isLoading" class="btn btn-success" (click)="save()">
         <app-spinner *ngIf="isLoading"></app-spinner>
-        <span> Save</span>
+        <span> <i class="fa fa-floppy-o" aria-hidden="true"></i> Save</span>
       </button>
     </div>
   </div>

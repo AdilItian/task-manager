@@ -13,12 +13,18 @@ export class SidebarComponent implements OnInit {
   @select((store) => store.sidebarTasks)
   tasks: any;
 
+  areTasksVisible: boolean = true;
+
   constructor(private ngRedux: NgRedux<IAppState>) {}
 
   public filteredTasks: any = [];
 
   ngOnInit(): void {
     this.filteredTasks = this.tasks;
+  }
+
+  toggleTasksVisibility() {
+    this.areTasksVisible = !this.areTasksVisible;
   }
 
   searchTasks(e: any) {
