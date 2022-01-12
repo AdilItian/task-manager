@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgRedux, select } from 'ng2-redux';
+import { NgRedux, select } from '@angular-redux/store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IAppState } from '../../store';
 import { SELECT_TASK } from '../../actions';

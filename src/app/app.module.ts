@@ -14,7 +14,7 @@ import { AdhocTaskComponent } from './pages/adhoc-task/adhoc-task.component';
 import { ServerTaskComponent } from './pages/server-task/server-task.component';
 import { FullProcessTaskComponent } from './pages/full-process-task/full-process-task.component';
 import { ToastsContainer } from './toast-container-component';
-import { NgRedux, NgReduxModule } from 'ng2-redux';
+import { NgRedux, NgReduxModule } from '@angular-redux/store';
 import { IAppState, rootReducer, INITIAL_STATE } from './store';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ConfigureConnectionComponent } from './pages/configure-connection/configure-connection.component';

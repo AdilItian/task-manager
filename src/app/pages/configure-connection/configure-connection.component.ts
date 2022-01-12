@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgRedux, select } from 'ng2-redux';
+import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../store';
 import Task from '../../models/task';
 import { INCREMENT, TASK_SET_LIST } from '../../actions';

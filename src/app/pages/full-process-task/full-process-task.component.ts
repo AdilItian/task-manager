@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TaskService, TASK_TYPES } from 'src/app/services/task.service';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store';
 import { TASK_ADD } from '../../actions';
 import { ToastService } from 'src/app/toast.service';

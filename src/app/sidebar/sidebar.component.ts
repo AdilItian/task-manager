@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgRedux, select } from 'ng2-redux';
+import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../store';
 import { TASK_FILTER_SIDEBAR } from '../actions';
 
