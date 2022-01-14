@@ -19,19 +19,23 @@ export class TaskComponent implements OnInit {
   @Input()
   onSelect!: (args: any) => void;
 
+  @Input()
+  loadTask!: (args: any) => void;
+
   constructor(
     private ngRedux: NgRedux<IAppState>,
     private router: Router
   ) {}
 
   onSelectTask(task: any) {
+    this.loadTask({componentName: 'task', payload: task});
     this.ngRedux.dispatch({
       type: SELECT_TASK,
       payload: {
         task,
       },
     });
-    this.router.navigateByUrl(APP_URLS.TASK_DETAILS);
+    // this.router.navigateByUrl(APP_URLS.TASK_DETAILS);
   }
 
   ngOnInit(): void {}

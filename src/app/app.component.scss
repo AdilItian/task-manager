@@ -11,10 +11,13 @@
     flex: 1;
     padding-left: 1rem;
     border: 1px solid lightgray;
-    min-height: calc(100vh - 5rem);
+    padding-bottom: 1rem;
     border-radius: 0.5rem;
     @media (min-width: 768px) {
         max-width: 20rem;
+    }
+    @media (min-width: 481px) {
+        min-height: calc(100vh - 5rem);
     }
     @media (min-width: 300px) {
         min-width: 270px;
@@ -28,4 +31,26 @@
     border: 1px solid lightgray;
     padding: 1rem;
     border-radius: 0.5rem;
+}
+
+.container-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.container-content {
+    padding-top: 1rem;
+}
+
+.home-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    flex-direction: column;
+
+    .fa {
+        font-size: 10rem;
+    }
 }

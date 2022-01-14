@@ -1,4 +1,5 @@
-<h5 class="text-center mb-5 pt-3">Task Details</h5>
+
+<h5 class="text-center mb-5 pt-3">Task Details - {{task.taskName}}</h5>
 
 <ul ngbNav #nav="ngbNav" class="links">
   <li ngbNavItem routerLinkActive="true">
@@ -48,9 +49,9 @@
           </tbody>
         </table>
       </div>
-      <button class="btn btn-outline-danger mr-2" (click)="cancel()">
+      <!-- <button class="btn btn-outline-danger mr-2" (click)="cancel()">
         <i class="fa fa-times" aria-hidden="true"></i> Cancel
-      </button>
+      </button> -->
       <button class="btn btn-success">
         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
       </button>
@@ -98,9 +99,9 @@
           </tbody>
         </table>
       </div>
-      <button class="btn btn-outline-danger mr-2" (click)="cancel()">
+      <!-- <button class="btn btn-outline-danger mr-2" (click)="cancel()">
         <i class="fa fa-times" aria-hidden="true"></i> Cancel
-      </button>
+      </button> -->
       <button class="btn btn-success">
         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
       </button>

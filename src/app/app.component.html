@@ -1,18 +1,25 @@
-<app-navbar
-  [onConfigureConnection]="handleConfigureConnection"
-></app-navbar>
+<app-navbar [loadTab]="loadTab"></app-navbar>
 
 <div class="main-container">
   <div class="sidebar">
     <app-spinner></app-spinner>
-    <app-sidebar
-    ></app-sidebar>
+    <app-sidebar [loadTask]="loadTab"></app-sidebar>
   </div>
   <div class="content">
-    <!-- <app-connection [task]="selectedTask"></app-connection> -->
-    <router-outlet></router-outlet>
+    <div class="container-tabs">
+      <ng-container #parent></ng-container>
+    </div>
+
+    <div class="container-content">
+      <ng-container #content></ng-container>
+    </div>
+
+    <div *ngIf="!currentTab" class="home-content">
+      <i class="fa fa-tasks"></i>
+      <h1>Task Manager</h1>
+    </div>
+
   </div>
 </div>
-
 
 <app-toasts></app-toasts>

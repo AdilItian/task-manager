@@ -17,6 +17,6 @@
   />
 
   <div *ngFor="let task of filteredTasks | async">
-    <app-task [data]="task"></app-task>
+    <app-task [loadTask]="loadTask" [data]="task"></app-task>
   </div>
 </div>

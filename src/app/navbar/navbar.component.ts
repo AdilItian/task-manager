@@ -11,6 +11,9 @@ export class NavbarComponent implements OnInit {
 
   @Input()
   onConfigureConnection!: (args: boolean) => void;
+  @Input()
+  loadTab!: (args: any) => void;
+
   APP_URLS = APP_URLS;
   
   public isMenuCollapsed = true;

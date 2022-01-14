@@ -34,8 +34,9 @@
             >Connections</a
           >
           <div ngbDropdownMenu="connections">
-            <a class="nav-link" [routerLink]="APP_URLS.CONFIGURE_CONNECTION" ngbDropdownItem
-              ><button class="btn-sm" ngbDropdownItem >Configure Connections</button></a
+            <!-- <a class="nav-link" [routerLink]="APP_URLS.CONFIGURE_CONNECTION" ngbDropdownItem -->
+              <a class="nav-link" ngbDropdownItem
+              ><button class="btn-sm" (click)="loadTab({componentName: 'Configure Connection'})" ngbDropdownItem >Configure Connections</button></a
             >
           </div>
         </li>
@@ -45,13 +46,16 @@
             >New Task</a
           >
           <div ngbDropdownMenu="connections">
-            <a class="nav-link" [routerLink]="APP_URLS.ADHOC_TASK" ngbDropdownItem
+            <!-- <a class="nav-link" [routerLink]="APP_URLS.ADHOC_TASK" ngbDropdownItem -->
+              <a class="nav-link" (click)="loadTab({componentName: 'Adhoc Task'})" ngbDropdownItem
               ><button class="btn-sm" ngbDropdownItem >Adhoc task</button></a
             >
-            <a class="nav-link" [routerLink]="APP_URLS.TASK_FROM_SERVER" ngbDropdownItem
+            <!-- <a class="nav-link" [routerLink]="APP_URLS.TASK_FROM_SERVER" ngbDropdownItem -->
+              <a class="nav-link" (click)="loadTab({componentName: 'Task from Server'})" ngbDropdownItem
               ><button class="btn-sm" ngbDropdownItem>Task from Server</button></a
             >
-            <a class="nav-link" [routerLink]="APP_URLS.FULL_PROCESS_TASK" ngbDropdownItem
+            <!-- <a class="nav-link" [routerLink]="APP_URLS.FULL_PROCESS_TASK" ngbDropdownItem -->
+              <a class="nav-link" (click)="loadTab({componentName: 'Full Process Task'})" ngbDropdownItem
               ><button class="btn-sm" ngbDropdownItem>Full Process Task</button></a
             >
           </div>

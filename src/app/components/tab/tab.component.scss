@@ -1,0 +1,16 @@
+.component-tab {
+    border: 1px solid darkslategrey;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    background-color: white;
+    color: darkslategrey;
+    cursor: pointer;
+    &:focus  {
+        background-color: darkslategrey;
+        color: white;
+    }
+
+    .fa {
+        margin-left: 1rem;
+    }
+}

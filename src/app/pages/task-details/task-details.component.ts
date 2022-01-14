@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { APP_URLS } from 'src/app/app-routing.module';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./task-details.component.scss'],
 })
 export class TaskDetailsComponent implements OnInit {
+
+@Input()
+task: any = {};
+
   public details = [
     {
       Detail1: 'Text',
