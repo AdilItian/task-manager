@@ -15,8 +15,11 @@ import { APP_URLS } from 'src/app/app-routing.module';
 })
 export class AdhocTaskComponent implements OnInit {
 
-  public task: any = {};
+  public task: any = {
+    connectionId: ""
+  };
   public isLoading: boolean = false;
+  public connections: any = [];
 
   constructor(private modalService: NgbModal, 
     private taskService: TaskService,
@@ -25,6 +28,9 @@ export class AdhocTaskComponent implements OnInit {
     private router: Router){}
 
   ngOnInit(): void {
+    this.ngRedux.select('connections').subscribe(data => {
+      this.connections = data;
+    })
   }
 
   cancel() {
@@ -33,17 +39,18 @@ export class AdhocTaskComponent implements OnInit {
   async save() {
     try {
       this.isLoading = true;
-      // const data = await this.taskService.createAdhocTask(this.task);
-      const data = {};
+      const data = await this.taskService.createAdhocTask(this.task);
+      // const data = {};
       if (data) {
         this.toastService.show('Task added successfully', {classname: 'bg-success text-light'});
         this.ngRedux.dispatch({
           type: TASK_ADD,
           payload: {
-            task: { ...data, type: TASK_TYPES.ADHOC },
+            task: { ...this.task, type: TASK_TYPES.ADHOC },
           },
         });
-        return this.modalService.dismissAll();
+        this.task = {};
+        // return this.modalService.dismissAll();
       }
     } catch (ex) {
     } finally {

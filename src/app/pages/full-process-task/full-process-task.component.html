@@ -1,20 +1,27 @@
 <div class="container-fluid pt-3">
-    <h5 class="text-center mb-5">Full Process Task</h5>
-  
-    <div class="form-group">
-      <select class="form-control" [(ngModel)]="task.connectionId">
-        <option>Connection1</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <textarea class="form-control" rows="10" [(ngModel)]="task.description"></textarea>
-    </div>
-    <div class="form-group text-right">
-      <!-- <button class="btn btn-outline-danger mr-2" [disabled]="isLoading" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button> -->
-      <button [disabled]="isLoading" class="btn btn-success" (click)="save()">
-        <app-spinner *ngIf="isLoading"></app-spinner>
-        <span> <i class="fa fa-floppy-o" aria-hidden="true"></i> Save</span>
-      </button>
-    </div>
+  <h5 class="text-center mb-5">Full Process Task</h5>
+
+  <div class="form-group">
+    <select class="form-control" [(ngModel)]="task.connectionId">
+      <option disabled selected value="">-- Select Connection --</option>
+      <option *ngFor="let connection of connections" [value]="connection.id">
+        {{ connection.connectionName }}
+      </option>
+    </select>
   </div>
-  
+  <div class="form-group">
+    <textarea
+      class="form-control"
+      rows="10"
+      placeholder="Description"
+      [(ngModel)]="task.description"
+    ></textarea>
+  </div>
+  <div class="form-group text-right">
+    <!-- <button class="btn btn-outline-danger mr-2" [disabled]="isLoading" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button> -->
+    <button [disabled]="isLoading" class="btn btn-success" (click)="save()">
+      <app-spinner *ngIf="isLoading"></app-spinner>
+      <span> <i class="fa fa-floppy-o" aria-hidden="true"></i> Save</span>
+    </button>
+  </div>
+</div>

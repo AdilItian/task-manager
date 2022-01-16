@@ -1,18 +1,37 @@
 .tasks-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 .tasks-label.active {
-    position: relative;
-    &::before {
-        position: absolute;
-        content: '';
-        top: calc(100% + 2px);
-        width: 1px;
-        height: 0.9rem;
-        background: lightgray;
-        left: 0.5rem;
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    top: calc(100% + 2px);
+    width: 1px;
+    height: 0.9rem;
+    background: lightgray;
+    left: 0.5rem;
+  }
+}
+
+.list-container {
+  max-height: calc(100vh - 15rem);
+  overflow-y: auto;
+  overflow-x: visible;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
+  }
 }

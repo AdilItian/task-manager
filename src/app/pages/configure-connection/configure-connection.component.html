@@ -2,9 +2,15 @@
   <div class="form-container">
     <div class="form-group">
       <label for="existing-connections">Existing Connections</label>
-      <select id="existing-connections" class="form-control">
-        <option *ngFor="let opt of existingConnections" [value]="opt">
-          {{ opt }}
+      <select
+        id="existing-connections"
+        (change)="handleSelectConnection($event)"
+        class="form-control"
+        [(ngModel)]="selectedConnectionId"
+      >
+        <option disabled selected>-- Select Connection --</option>
+        <option *ngFor="let connection of connections" [value]="connection.id">
+          {{ connection.connectionName }}
         </option>
       </select>
     </div>
@@ -21,7 +27,7 @@
             <label for="connection-name">Connection name</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.name"
+              [(ngModel)]="teraData.connectionName"
               type="text"
               id="connection-name"
             />
@@ -30,7 +36,7 @@
             <label for="server">Server</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.server"
+              [(ngModel)]="teraData.server"
               type="text"
               id="server"
             />
@@ -39,25 +45,25 @@
             <label for="database">Database</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.database"
+              [(ngModel)]="teraData.database"
               type="text"
               id="database"
             />
           </div>
           <div class="form-group">
-            <label for="username">Username</label>
+            <label for="userName">Username</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.username"
+              [(ngModel)]="teraData.userName"
               type="text"
-              id="username"
+              id="userName"
             />
           </div>
           <div class="form-group">
             <label for="password">Password</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.password"
+              [(ngModel)]="teraData.password"
               type="password"
               id="passowrd"
             />
@@ -66,9 +72,12 @@
             <label for="authentication-type">Authentication</label>
             <select
               class="form-control"
-              [(ngModel)]="connection.authentication"
+              [(ngModel)]="teraData.authentication"
               id="authentication-type"
             >
+              <option disabled selected value="">
+                -- Select Authentication --
+              </option>
               <option *ngFor="let type of authenticationTypes" [value]="type">
                 {{ type }}
               </option>
@@ -78,13 +87,26 @@
             <!-- <button class="btn btn-outline-danger mr-2" (click)="cancel()">
               <i class="fa fa-times" aria-hidden="true"></i> Cancel
             </button> -->
-            <button (click)="handleSave()" class="btn btn-success mr-2">
+            <button
+              (click)="handleSave()"
+              class="btn btn-success mr-2"
+              [disabled]="isLoading"
+              (click)="handleCreateTera()"
+            >
+              <app-spinner *ngIf="isLoading"></app-spinner>
               <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
             </button>
-            <button class="btn btn-primary mr-2">
+            <button class="btn btn-primary mr-2" [disabled]="isLoading">
+              <app-spinner *ngIf="isLoading"></app-spinner>
               <i class="fa fa-plug" aria-hidden="true"></i> Test
             </button>
-            <button class="btn btn-danger">
+            <button
+              *ngIf="selectedConnectionId && teraData.connectionName"
+              class="btn btn-danger"
+              (click)="handleDelete('tera')"
+              [disabled]="isLoading"
+            >
+              <app-spinner *ngIf="isLoading"></app-spinner>
               <i class="fa fa-trash" aria-hidden="true"></i> Delete
             </button>
           </div>
@@ -99,7 +121,7 @@
             <label for="connection-name">Connection name</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.name"
+              [(ngModel)]="snowFlake.connectionName"
               type="text"
               id="connection-name"
             />
@@ -108,7 +130,7 @@
             <label for="server">Server</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.server"
+              [(ngModel)]="snowFlake.server"
               type="text"
               id="server"
             />
@@ -117,25 +139,25 @@
             <label for="database">Database</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.database"
+              [(ngModel)]="snowFlake.database"
               type="text"
               id="database"
             />
           </div>
           <div class="form-group">
-            <label for="username">Username</label>
+            <label for="userName">Username</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.username"
+              [(ngModel)]="snowFlake.userName"
               type="text"
-              id="username"
+              id="userName"
             />
           </div>
           <div class="form-group">
             <label for="password">Password</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.password"
+              [(ngModel)]="snowFlake.password"
               type="password"
               id="passowrd"
             />
@@ -144,43 +166,59 @@
             <label for="authentication-type">Authentication</label>
             <select
               class="form-control"
-              [(ngModel)]="connection.authentication"
+              [(ngModel)]="snowFlake.authentication"
               id="authentication-type"
             >
+              <option disabled selected value="">
+                -- Select Authentication --
+              </option>
               <option *ngFor="let type of authenticationTypes" [value]="type">
                 {{ type }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label for="schema">Schema name</label>
+            <label for="schemaName">Schema name</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.schema"
+              [(ngModel)]="snowFlake.schemaName"
               type="text"
-              id="schema"
+              id="schemaName"
             />
           </div>
           <div class="form-group">
             <label for="dwh">Compute DWH</label>
             <input
               class="form-control"
-              [(ngModel)]="connection.dwh"
+              [(ngModel)]="snowFlake.dwh"
               type="text"
               id="dwh"
             />
           </div>
           <div class="text-right">
-            <button class="btn btn-outline-danger mr-2" (click)="cancel()">
+            <!-- <button class="btn btn-outline-danger mr-2" (click)="cancel()">
               <i class="fa fa-times" aria-hidden="true"></i> Cancel
-            </button>
-            <button (click)="handleSave()" class="btn btn-success mr-2">
+            </button> -->
+            <button
+              (click)="handleSave()"
+              [disabled]="isLoading"
+              class="btn btn-success mr-2"
+              (click)="handleCreateFlake()"
+            >
+              <app-spinner *ngIf="isLoading"></app-spinner>
               <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
             </button>
-            <button class="btn btn-primary mr-2">
+            <button [disabled]="isLoading" class="btn btn-primary mr-2">
+              <app-spinner *ngIf="isLoading"></app-spinner>
               <i class="fa fa-plug" aria-hidden="true"></i> Test
             </button>
-            <button class="btn btn-danger">
+            <button
+              [disabled]="isLoading"
+              *ngIf="selectedConnectionId && snowFlake.connectionName"
+              class="btn btn-danger"
+              (click)="handleDelete('flake')"
+            >
+              <app-spinner *ngIf="isLoading"></app-spinner>
               <i class="fa fa-trash" aria-hidden="true"></i> Delete
             </button>
           </div>

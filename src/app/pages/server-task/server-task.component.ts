@@ -15,8 +15,11 @@ import { APP_URLS } from 'src/app/app-routing.module';
 })
 export class ServerTaskComponent implements OnInit {
 
-  public task: any = {};
+  public task: any = {
+    connectionId: ''
+  };
   public isLoading: boolean = false;
+  connections: any = [];
 
   constructor(
     private modalService: NgbModal,
@@ -27,6 +30,9 @@ export class ServerTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.ngRedux.select('connections').subscribe(data => {
+      this.connections = data;
+    })
   }
 
   cancel() {
@@ -35,8 +41,8 @@ export class ServerTaskComponent implements OnInit {
   async save() {
     try {
       this.isLoading = true;
-      // const data = await this.taskService.createTaskFromServer(this.task);
-      const data = {};
+      const data = await this.taskService.createTaskFromServer(this.task);
+      // const data = {};
       if (data) {
         this.toastService.show('Task added successfully', {classname: 'bg-success text-light'});
         this.ngRedux.dispatch({
@@ -45,7 +51,8 @@ export class ServerTaskComponent implements OnInit {
             task: { ...data, type: TASK_TYPES.TASK_FROM_SERVER },
           },
         });
-        return this.modalService.dismissAll();
+        this.task = {};
+        // return this.modalService.dismissAll();
       }
     } catch (ex) {
     } finally {

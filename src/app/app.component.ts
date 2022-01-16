@@ -8,11 +8,11 @@ import {
   OnInit,
 } from '@angular/core';
 import { TaskService } from './services/task.service';
+import { ConnectionService } from './services/connection.service';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from './store';
 import Task from './models/task';
-import { INCREMENT, TASK_SET_LIST } from './actions';
-import { async } from '@angular/core/testing';
+import { INCREMENT, TASK_SET_LIST, CONNECTION_SET_LIST } from './actions';
 
 const COMPONENTS = {
   TASK: 'task',
@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
+    private connectionService: ConnectionService,
     private ngRedux: NgRedux<IAppState>,
     private vcr: ViewContainerRef,
     private cfr: ComponentFactoryResolver
@@ -61,6 +62,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllTasks();
+    this.getAllConnections();
   }
 
   async getAllTasks() {
@@ -69,6 +71,17 @@ export class AppComponent implements OnInit {
       type: TASK_SET_LIST,
       payload: {
         tasks: data,
+      },
+    });
+    return (this.currentTasks = data as unknown as Array<Task>);
+  }
+
+  async getAllConnections() {
+    const data = await this.connectionService.getAll();
+    this.ngRedux.dispatch({
+      type: CONNECTION_SET_LIST,
+      payload: {
+        connections: data,
       },
     });
     return (this.currentTasks = data as unknown as Array<Task>);
