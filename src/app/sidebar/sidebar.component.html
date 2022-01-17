@@ -1,32 +1,34 @@
-<p
-  class="tasks-label"
-  [ngClass]="areTasksVisible ? 'active' : ''"
-  (click)="toggleTasksVisibility()"
->
-  Existing tasks
-  <i
-    *ngIf="areTasksVisible"
-    class="fa fa-angle-up float-right"
-    aria-hidden="true"
-  ></i>
-  <i
-    *ngIf="!areTasksVisible"
-    class="fa fa-angle-down float-right"
-    aria-hidden="true"
-  ></i>
-</p>
+<div class="container-main">
+  <p
+    class="tasks-label"
+    [ngClass]="areTasksVisible ? 'active' : ''"
+    (click)="toggleTasksVisibility()"
+  >
+    Existing tasks
+    <i
+      *ngIf="areTasksVisible"
+      class="fa fa-angle-up float-right"
+      aria-hidden="true"
+    ></i>
+    <i
+      *ngIf="!areTasksVisible"
+      class="fa fa-angle-down float-right"
+      aria-hidden="true"
+    ></i>
+  </p>
 
-<div *ngIf="areTasksVisible">
-  <input
-    class="form-control"
-    placeholder="Search"
-    type="search"
-    (input)="searchTasks($event)"
-  />
+  <div *ngIf="areTasksVisible">
+    <input
+      class="form-control"
+      placeholder="Search"
+      type="search"
+      (input)="searchTasks($event)"
+    />
 
-  <div class="list-container">
-    <div *ngFor="let task of filteredTasks | async">
-      <app-task [loadTask]="loadTask" [data]="task"></app-task>
+    <div class="list-container">
+      <div *ngFor="let task of filteredTasks | async">
+        <app-task [loadTask]="loadTask" [data]="task"></app-task>
+      </div>
     </div>
   </div>
 </div>
