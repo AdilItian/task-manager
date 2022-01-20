@@ -30,24 +30,47 @@ export class TaskService {
   }
 
   async createAdhocTask(data: any): Promise<any> {
+    let formData = new FormData();
+    for (let key in data) {
+      formData.append(key, data[key]);
+    }
+    formData.append('type', TASK_TYPES.ADHOC);
     return new Promise((resolve, reject) => {
-      this.http.post(`${environment.apiBaseUrl}/task`, {...data, type: TASK_TYPES.ADHOC}).subscribe(resp => {
+      this.http.post(`${environment.apiBaseUrl}/task`, formData).subscribe(resp => {
         resolve(resp);
       })
     })
   }
 
   async createTaskFromServer(data: any): Promise<any> {
+    let formData = new FormData();
+    for (let key in data) {
+      formData.append(key, data[key]);
+    }
+    formData.append('type', TASK_TYPES.TASK_FROM_SERVER);
     return new Promise((resolve, reject) => {
-      this.http.post(`${environment.apiBaseUrl}/task`, {...data, type: TASK_TYPES.TASK_FROM_SERVER}).subscribe(resp => {
+      this.http.post(`${environment.apiBaseUrl}/task`, formData).subscribe(resp => {
         resolve(resp);
       })
     })
   }
 
   async createFullProcessTask(data: any): Promise<any> {
+    let formData = new FormData();
+    for (let key in data) {
+      formData.append(key, data[key]);
+    }
+    formData.append('type', TASK_TYPES.FULL_PROCESS);
     return new Promise((resolve, reject) => {
-      this.http.post(`${environment.apiBaseUrl}/task`, {...data, type: TASK_TYPES.FULL_PROCESS}).subscribe(resp => {
+      this.http.post(`${environment.apiBaseUrl}/task`, formData).subscribe(resp => {
+        resolve(resp);
+      })
+    })
+  }
+
+  async deleteTask(taskId: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.delete(`${environment.apiBaseUrl}/task/${taskId}`).subscribe(resp => {
         resolve(resp);
       })
     })

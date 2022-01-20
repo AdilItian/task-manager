@@ -48,7 +48,7 @@ export class ServerTaskComponent implements OnInit {
         this.ngRedux.dispatch({
           type: TASK_ADD,
           payload: {
-            task: { ...data, type: TASK_TYPES.TASK_FROM_SERVER },
+            task: { ...this.task, id: data.response, type: TASK_TYPES.TASK_FROM_SERVER },
           },
         });
         this.task = {};

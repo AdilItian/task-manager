@@ -3,17 +3,17 @@ $color_light: #fff;
 
 .links {
   display: flex;
-  gap: 1rem;
+  row-gap: 1rem;
   flex-wrap: wrap;
   li {
     a {
       color: $color_primary;
-      background-color: $color_light;
-      border: 1px solid $color_primary;
-      border-radius: 0.5rem;
+      border-bottom: 1px solid $color_primary;
       &.active {
-        background-color: $color_primary;
-        color: $color_light;
+        border-top-right-radius: 0.375rem;
+        border-top-left-radius: 0.375rem;
+        border: 1px solid $color_primary;
+        border-bottom: none;
       }
     }
   }

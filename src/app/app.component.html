@@ -6,7 +6,7 @@
     <app-sidebar [loadTask]="loadTab"></app-sidebar>
   </div>
   <div class="content">
-    <div class="container-tabs">
+    <div class="container-tabs" [ngClass]="components.length ? 'with-content' : ''">
       <ng-container #parent></ng-container>
     </div>
 

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgRedux, select } from '@angular-redux/store';
-import { ActivatedRoute, Router } from '@angular/router';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store';
-import { SELECT_TASK } from '../../actions';
-import { APP_URLS } from 'src/app/app-routing.module';
+import { SELECT_TASK, TASK_DELETE } from '../../actions';
+import { TaskService } from 'src/app/services/task.service';
+import { ToastService } from 'src/app/toast.service';
 
 @Component({
   selector: 'app-task',
@@ -11,6 +11,7 @@ import { APP_URLS } from 'src/app/app-routing.module';
   styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent implements OnInit {
+  isLoading: boolean = false;
   @Input()
   data: any = {
     id: '',
@@ -24,18 +25,46 @@ export class TaskComponent implements OnInit {
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
-    private router: Router
+    private toastService: ToastService,
+    private taskService: TaskService
   ) {}
 
   onSelectTask(task: any) {
-    this.loadTask({componentName: 'task', payload: task});
+    this.loadTask({ componentName: 'task', payload: task });
     this.ngRedux.dispatch({
       type: SELECT_TASK,
       payload: {
         task,
       },
     });
-    // this.router.navigateByUrl(APP_URLS.TASK_DETAILS);
+  }
+
+  async deleteTask() {
+    try {
+      const r = confirm(`Are you sure you want to delete ${this.data.taskName}`);
+      if (!r) {
+        return false;
+      }
+      this.isLoading = true;
+      const data = await this.taskService.deleteTask(this.data.id);
+      if (data) {
+        this.toastService.show(`${this.data.taskName} deleted successfully`, {
+          classname: 'bg-success text-light',
+        });
+        this.ngRedux.dispatch({
+          type: TASK_DELETE,
+          payload: {
+            taskId: this.data.id,
+          },
+        });
+      }
+    } catch (ex) {
+      return this.toastService.show('Failed to delete task', {
+        classname: 'bg-danger text-light',
+      });
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   ngOnInit(): void {}

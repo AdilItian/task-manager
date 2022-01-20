@@ -7,6 +7,11 @@ export const CONNECTION_TYPES = {
   SNOW_FLAKE: "flake"
 }
 
+export const TEST_RESPONSES = {
+  NOT_CONNECTED: 'Not Connected',
+  CONNECTED: 'Connected'
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +31,14 @@ export class ConnectionService {
     return new Promise((resolve, reject) => {
       this.http.delete(`${environment.apiBaseUrl}/connection/${id}`).subscribe(resp => {
         resolve(true);
+      })
+    })
+  }
+
+  async test(data: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.post(`${environment.apiBaseUrl}/connection/test`, data).subscribe(resp => {
+        resolve(resp);
       })
     })
   }

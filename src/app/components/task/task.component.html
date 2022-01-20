@@ -1,12 +1,18 @@
 <div class="container-main">
-  <div class="title"><i class="fa fa-tasks"></i> {{data.taskName}}</div>
+  <div class="title"><i class="fa fa-tasks"></i> {{ data.taskName }}</div>
   <span ngbDropdown>
     <span class="icon no-caret" id="dropdownBasic1" ngbDropdownToggle>
-        ... 
+      ...
     </span>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="mt-2">
-      <button ngbDropdownItem (click)="onSelectTask(data)"><i class="fa fa-info-circle"></i> Show Details</button>
-      <button ngbDropdownItem><i class="fa fa-trash"></i> Delete</button>
+      <button ngbDropdownItem (click)="onSelectTask(data)">
+        <i class="fa fa-info-circle"></i> Show Details
+      </button>
+      <button ngbDropdownItem [disabled]="isLoading" (click)="deleteTask()">
+        <i class="fa fa-trash"></i>
+        <app-spinner *ngIf="isLoading"></app-spinner>
+        <span *ngIf="!isLoading"> Delete</span>
+      </button>
     </div>
   </span>
 </div>

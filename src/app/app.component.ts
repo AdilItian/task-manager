@@ -184,6 +184,12 @@ export class AppComponent implements OnInit {
         await this.handleLoadTaskFromServer();
         break;
     }
+    const tabButtons = document.querySelectorAll('button.component-tab');
+    tabButtons.forEach(item => {
+      item.classList.remove('active');
+    })
+    const currentTabButton = document.querySelector(`button[title='${data.title}']`);
+    currentTabButton?.classList.add('active');
     return (this.currentTab = data.title);
   };
 
@@ -240,6 +246,7 @@ export class AppComponent implements OnInit {
     ref.instance.componentName = componentName;
     ref.instance.onClick = this.handleTabClick;
     ref.instance.onClose = this.handleTabClose;
+    ref.instance.isActive = this.currentTab === title;
     return this.components.push({
       component: title,
     });

@@ -36,7 +36,11 @@
 .container-tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    row-gap: 1rem;
+    width: 100%;
+    &.with-content {
+        // border-bottom: 1px solid darkslategrey;
+    }
 }
 
 .container-content {

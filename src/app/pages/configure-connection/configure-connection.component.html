@@ -96,7 +96,7 @@
               <app-spinner *ngIf="isLoading"></app-spinner>
               <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
             </button>
-            <button class="btn btn-primary mr-2" [disabled]="isLoading">
+            <button class="btn btn-primary mr-2" [disabled]="isLoading" (click)="handleTestTera()">
               <app-spinner *ngIf="isLoading"></app-spinner>
               <i class="fa fa-plug" aria-hidden="true"></i> Test
             </button>
@@ -208,7 +208,7 @@
               <app-spinner *ngIf="isLoading"></app-spinner>
               <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
             </button>
-            <button [disabled]="isLoading" class="btn btn-primary mr-2">
+            <button [disabled]="isLoading" class="btn btn-primary mr-2" (click)="handleTestSnowFlake()">
               <app-spinner *ngIf="isLoading"></app-spinner>
               <i class="fa fa-plug" aria-hidden="true"></i> Test
             </button>

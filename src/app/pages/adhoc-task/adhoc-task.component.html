@@ -2,7 +2,7 @@
   <h5 class="text-center mb-5">Adhok Task</h5>
 
   <div class="form-group">
-    <select class="form-control" [(ngModel)]="task.connectionId">
+    <select class="form-control" [(ngModel)]="task.ConnectionId">
       <option disabled selected value="">-- Select Connection --</option>
       <option *ngFor="let connection of connections" [value]="connection.id">{{connection.connectionName}}</option>
     </select>

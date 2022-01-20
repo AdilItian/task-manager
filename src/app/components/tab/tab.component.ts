@@ -11,10 +11,12 @@ export class TabComponent implements OnInit {
   @Input() onClick!: (args: any) => void;
   @Input() onClose!: (args: any) => void;
   @Input() payload: any;
+  @Input() isActive: boolean = false;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   handleClick() {
     this.onClick({
@@ -22,6 +24,8 @@ export class TabComponent implements OnInit {
       payload: this.payload,
       title: this.title
     });
+    console.log("isActive", this.isActive);
+    console.log("title", this.title);
   }
 
   handleClose(e: any) {

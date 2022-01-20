@@ -48,7 +48,7 @@ export class FullProcessTaskComponent implements OnInit {
         this.ngRedux.dispatch({
           type: TASK_ADD,
           payload: {
-            task: { ...data, type: TASK_TYPES.FULL_PROCESS },
+            task: { ...this.task, id: data.response,  type: TASK_TYPES.FULL_PROCESS },
           },
         });
         this.task = {};

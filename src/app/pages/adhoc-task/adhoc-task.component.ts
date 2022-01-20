@@ -16,7 +16,7 @@ import { APP_URLS } from 'src/app/app-routing.module';
 export class AdhocTaskComponent implements OnInit {
 
   public task: any = {
-    connectionId: ""
+    ConnectionId: ""
   };
   public isLoading: boolean = false;
   public connections: any = [];
@@ -43,10 +43,11 @@ export class AdhocTaskComponent implements OnInit {
       // const data = {};
       if (data) {
         this.toastService.show('Task added successfully', {classname: 'bg-success text-light'});
+        console.log("data", data);
         this.ngRedux.dispatch({
           type: TASK_ADD,
           payload: {
-            task: { ...this.task, type: TASK_TYPES.ADHOC },
+            task: { ...this.task, id: data.response, type: TASK_TYPES.ADHOC },
           },
         });
         this.task = {};

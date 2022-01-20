@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./task-details.component.scss'],
 })
 export class TaskDetailsComponent implements OnInit {
-
-@Input()
-task: any = {};
+  isLoading: boolean = false;
+  @Input()
+  task: any = {};
 
   public details = [
     {
@@ -28,7 +28,9 @@ task: any = {};
     { Config2: 'Value' },
     { Config3: 'Value' },
   ];
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+  ) {}
 
   cancel() {
     return this.router.navigateByUrl(APP_URLS.HOME);
@@ -36,4 +38,3 @@ task: any = {};
 
   ngOnInit(): void {}
 }
-

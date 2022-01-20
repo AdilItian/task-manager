@@ -8,6 +8,7 @@ import {
   CONNECTION_GET_BY_ID,
   CONNECTION_ADD,
   CONNECTION_REMOVE,
+  TASK_DELETE,
 } from './actions';
 
 export interface IAppState {
@@ -37,22 +38,32 @@ export function rootReducer(state = INITIAL_STATE, action: any): IAppState {
         sidebarTasks: action.payload.tasks,
       };
     case TASK_ADD:
+      const taskNumber = Number((state.tasks[state.tasks.length -1]).taskName.slice(4))+1;
+      const taskName = 'Task' + taskNumber;
       return {
         ...state,
         tasks: [
           ...state.tasks,
           {
             ...action.payload.task,
-            taskName: `Task ${state.tasks.length + 1}`,
+            taskName: taskName,
           },
         ],
         sidebarTasks: [
           ...state.tasks,
           {
             ...action.payload.task,
-            taskName: `Task ${state.tasks.length + 1}`,
+            taskName: taskName,
           },
         ],
+      };
+    case TASK_DELETE:
+      const taskRemovalIndex = state.tasks.findIndex(
+        (f) => f.id === action.payload.taskId
+      );
+      state.tasks.splice(taskRemovalIndex, 1);
+      return {
+        ...state,
       };
     case TASK_FILTER_SIDEBAR:
       if (!action.payload.searchText) {
@@ -80,9 +91,11 @@ export function rootReducer(state = INITIAL_STATE, action: any): IAppState {
         ...state,
         connections: [...state.connections, action.payload.connection],
       };
-      case CONNECTION_REMOVE:
-        const removalIndex = state.connections.findIndex(f => f.id === action.payload.connectionId);
-        state.connections.splice(removalIndex, 1);
+    case CONNECTION_REMOVE:
+      const removalIndex = state.connections.findIndex(
+        (f) => f.id === action.payload.connectionId
+      );
+      state.connections.splice(removalIndex, 1);
       return {
         ...state,
       };

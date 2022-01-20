@@ -1,3 +1,7 @@
-
-
-<button (click)="handleClick()" class="component-tab">{{title}} <i (click)="handleClose($event)" class="fa fa-times-circle"></i></button>
+<button
+  (click)="handleClick()"
+  [title]="title"
+  class="component-tab"
+>
+  {{ title }} <i (click)="handleClose($event)" class="fa fa-times-circle"></i>
+</button>

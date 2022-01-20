@@ -5,6 +5,7 @@ import { APP_URLS } from 'src/app/app-routing.module';
 import { Router } from '@angular/router';
 import {
   CONNECTION_TYPES,
+  TEST_RESPONSES,
   ConnectionService,
 } from 'src/app/services/connection.service';
 import { ToastService } from 'src/app/toast.service';
@@ -93,6 +94,7 @@ export class ConfigureConnectionComponent implements OnInit {
             payload: {
               connection: {
                 ...this.teraData,
+                id: data.response,
                 type: CONNECTION_TYPES.TERA_DATA,
               },
             },
@@ -123,6 +125,7 @@ export class ConfigureConnectionComponent implements OnInit {
             payload: {
               connection: {
                 ...this.snowFlake,
+                id: data.response,
                 type: CONNECTION_TYPES.SNOW_FLAKE,
               },
             },
@@ -143,8 +146,68 @@ export class ConfigureConnectionComponent implements OnInit {
     }
   }
 
+  async handleTestTera() {
+    try {
+      this.isLoading = true;
+      const data = await this.connectionService.test({
+        ...this.teraData,
+        type: CONNECTION_TYPES.TERA_DATA,
+      });
+      if (data) {
+        switch (data.response) {
+          case TEST_RESPONSES.CONNECTED:
+            this.toastService.show('Connection can connect successfully', {
+              classname: 'bg-success text-light',
+            });
+            break;
+          case TEST_RESPONSES.NOT_CONNECTED:
+            this.toastService.show("Connection can't connect", {
+              classname: 'bg-warning',
+            });
+            break;
+        }
+      }
+    } catch (ex) {
+      this.toastService.show('Failed to test connection', {
+        classname: 'bg-danger text-light',
+      });
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  async handleTestSnowFlake() {
+    try {
+      this.isLoading = true;
+      const data = await this.connectionService.test({
+        ...this.snowFlake,
+        type: CONNECTION_TYPES.SNOW_FLAKE,
+      });
+      if (data) {
+        switch (data.response) {
+          case TEST_RESPONSES.CONNECTED:
+            this.toastService.show('Connection can connect successfully', {
+              classname: 'bg-success text-light',
+            });
+            break;
+          case TEST_RESPONSES.NOT_CONNECTED:
+            this.toastService.show("Connection can't connect", {
+              classname: 'bg-warning',
+            });
+            break;
+        }
+      }
+    } catch (ex) {
+      this.toastService.show('Failed to test connection', {
+        classname: 'bg-danger text-light',
+      });
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
   resetTerData() {
-    return this.teraData = {...this.connectionInitialValues};
+    return (this.teraData = { ...this.connectionInitialValues });
   }
 
   handleDelete = async (type: string) => {
@@ -174,9 +237,9 @@ export class ConfigureConnectionComponent implements OnInit {
           this.ngRedux.dispatch({
             type: CONNECTION_REMOVE,
             payload: {
-              connectionId: this.selectedConnectionId
-            }
-          })
+              connectionId: this.selectedConnectionId,
+            },
+          });
           this.selectedConnectionId = null;
         }
       }
@@ -188,5 +251,5 @@ export class ConfigureConnectionComponent implements OnInit {
       this.isLoading = false;
     }
     return false;
-  }
+  };
 }
