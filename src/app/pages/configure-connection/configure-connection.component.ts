@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store';
-import { APP_URLS } from 'src/app/app-routing.module';
 import { Router } from '@angular/router';
 import {
   CONNECTION_TYPES,
@@ -57,10 +56,6 @@ export class ConfigureConnectionComponent implements OnInit {
 
   handleSave() {
     this.connection = { ...this.connectionInitialValues };
-  }
-
-  cancel() {
-    return this.router.navigateByUrl(APP_URLS.HOME);
   }
 
   handleSelectConnection(event: any) {

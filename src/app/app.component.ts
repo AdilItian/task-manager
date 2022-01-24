@@ -1,10 +1,8 @@
 import {
   Component,
-  NgModule,
   ViewChild,
   ViewContainerRef,
   ComponentFactoryResolver,
-  ComponentRef,
   OnInit,
 } from '@angular/core';
 import { TaskService } from './services/task.service';
@@ -44,7 +42,6 @@ export class AppComponent implements OnInit {
     private taskService: TaskService,
     private connectionService: ConnectionService,
     private ngRedux: NgRedux<IAppState>,
-    private vcr: ViewContainerRef,
     private cfr: ComponentFactoryResolver
   ) {}
 
@@ -185,10 +182,12 @@ export class AppComponent implements OnInit {
         break;
     }
     const tabButtons = document.querySelectorAll('button.component-tab');
-    tabButtons.forEach(item => {
+    tabButtons.forEach((item) => {
       item.classList.remove('active');
-    })
-    const currentTabButton = document.querySelector(`button[title='${data.title}']`);
+    });
+    const currentTabButton = document.querySelector(
+      `button[title='${data.title}']`
+    );
     currentTabButton?.classList.add('active');
     return (this.currentTab = data.title);
   };

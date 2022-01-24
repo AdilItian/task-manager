@@ -6,8 +6,6 @@ import { IAppState } from '../../store';
 import { TASK_ADD } from '../../actions';
 import { ToastService } from 'src/app/toast.service';
 import { Router } from '@angular/router';
-import { APP_URLS } from 'src/app/app-routing.module';
-
 
 @Component({
   selector: 'app-full-process-task',
@@ -16,7 +14,7 @@ import { APP_URLS } from 'src/app/app-routing.module';
 })
 export class FullProcessTaskComponent implements OnInit {
   public task: any = {
-    connectionId: ''
+    connectionId: '',
   };
   public isLoading: boolean = false;
   connections: any = [];
@@ -30,25 +28,28 @@ export class FullProcessTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ngRedux.select('connections').subscribe(data => {
+    this.ngRedux.select('connections').subscribe((data) => {
       this.connections = data;
-    })
+    });
   }
 
-  cancel() {
-    return this.router.navigateByUrl(APP_URLS.HOME);
-  }
   async save() {
     try {
       this.isLoading = true;
       const data = await this.taskService.createFullProcessTask(this.task);
       // const data = {};
       if (data) {
-        this.toastService.show('Task added successfully', {classname: 'bg-success text-light'});
+        this.toastService.show('Task added successfully', {
+          classname: 'bg-success text-light',
+        });
         this.ngRedux.dispatch({
           type: TASK_ADD,
           payload: {
-            task: { ...this.task, id: data.response,  type: TASK_TYPES.FULL_PROCESS },
+            task: {
+              ...this.task,
+              id: data.response,
+              type: TASK_TYPES.FULL_PROCESS,
+            },
           },
         });
         this.task = {};

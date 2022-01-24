@@ -18,7 +18,6 @@
     ></textarea>
   </div>
   <div class="form-group text-right">
-    <!-- <button class="btn btn-outline-danger mr-2" [disabled]="isLoading" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button> -->
     <button [disabled]="isLoading" class="btn btn-success" (click)="save()">
       <app-spinner *ngIf="isLoading"></app-spinner>
       <span> <i class="fa fa-floppy-o" aria-hidden="true"></i> Save</span>

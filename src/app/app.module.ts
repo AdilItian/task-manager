@@ -20,8 +20,6 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ConfigureConnectionComponent } from './pages/configure-connection/configure-connection.component';
 import { DefaultLayoutComponent } from './layouts/default/default-layout/default-layout.component';
 import { HomeComponent } from './pages/home/home.component';
-import { AdminlistComponent } from './adminlist/adminlist.component';
-import { UserlistComponent } from './userlist/userlist.component';
 import { AppTabDirective } from './app-tab.directive';
 import { TabComponent } from './components/tab/tab.component';
 
@@ -41,7 +39,7 @@ import { TabComponent } from './components/tab/tab.component';
     DefaultLayoutComponent,
     HomeComponent,
     AppTabDirective,
-    TabComponent
+    TabComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,10 +51,6 @@ import { TabComponent } from './components/tab/tab.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [
-    AdminlistComponent,
-    UserlistComponent,
-  ]
 })
 export class AppModule {
   constructor(ngRedux: NgRedux<IAppState>) {
