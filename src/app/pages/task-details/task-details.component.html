@@ -83,28 +83,78 @@
     </ng-template>
   </li>
   <li ngbNavItem>
+    <a ngbNavLink>Activities</a>
+    <ng-template ngbNavContent>
+      <div>
+        <div class="config-tables">
+          <table>
+            <thead>
+              <tr>
+                <th>Column 1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Activity 1</td>
+              </tr>
+              <tr>
+                <td>Activity 2</td>
+              </tr>
+              <tr>
+                <td>Activity 3</td>
+              </tr>
+              <tr>
+                <td>Pointer to Metrics 100</td>
+              </tr>
+              <tr>
+                <td>Activity 4</td>
+              </tr>
+              <tr>
+                <td>Activity 5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="config-tables">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric ID</th>
+                <th>Metric 1</th>
+                <th>Metric 2</th>
+                <th>Metric 3</th>
+                <th>Metric 4</th>
+                <th>Metric 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>100</td>
+                <td>100</td>
+                <td>43</td>
+                <td>345</td>
+                <td>223</td>
+                <td>efgfed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-template>
+  </li>
+  <li ngbNavItem>
     <a ngbNavLink>Publish Task</a>
     <ng-template ngbNavContent>
       <div class="publish-tables">
-        <table>
-          <thead>
-            <tr>
-              <th>User Name</th>
-              <th>Grant Access</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of users; let i = index">
-              <td>{{ item.label }}</td>
-              <td>
-                <label class="switch">
-                  <input type="checkbox" [(ngModel)]="item.isAllowed" />
-                  <span class="slider round"></span>
-                </label>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div *ngFor="let item of users; let i = index">
+          <label>{{ item.label }}</label>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="item.isAllowed" />
+            <span class="slider round"></span>
+          </label>
+        </div>
       </div>
       <button class="btn btn-success" [disabled]="isLoading">
         <app-spinner *ngIf="isLoading"></app-spinner>
@@ -144,61 +194,3 @@
   </li>
 </ul>
 <div [ngbNavOutlet]="nav"></div>
-
-<div class="mt-3">
-  <div class="config-tables">
-    <table>
-      <thead>
-        <tr>
-          <th>Column 1</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Activity 1</td>
-        </tr>
-        <tr>
-          <td>Activity 2</td>
-        </tr>
-        <tr>
-          <td>Activity 3</td>
-        </tr>
-        <tr>
-          <td>Pointer to Metrics 100</td>
-        </tr>
-        <tr>
-          <td>Activity 4</td>
-        </tr>
-        <tr>
-          <td>Activity 5</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-<div class="mt-1">
-  <div class="config-tables">
-    <table>
-      <thead>
-        <tr>
-          <th>Metric ID</th>
-          <th>Metric 1</th>
-          <th>Metric 2</th>
-          <th>Metric 3</th>
-          <th>Metric 4</th>
-          <th>Metric 5</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>100</td>
-          <td>100</td>
-          <td>43</td>
-          <td>345</td>
-          <td>223</td>
-          <td>efgfed</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
